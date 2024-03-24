@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  customer:
+    image: postgres
+    container_name: postgres_container
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_DB: shopping
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mallika
+    volumes:
+      - /Users/mallikaroy/gitlearn/JPA-Customers/volume_customers:/var/lib/postgresql/data
+
+  app:
+    build: .
+    image: customer_app
+    container_name: customer_app_container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - customer
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://customer:5432/shopping
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: mallika
