@@ -11,7 +11,7 @@ pipeline {
             }
         }
 
-        stage('craete jar file') {
+        stage('create jar file') {
             steps {
                 script {
                     sh 'mvn clean install -DskipTests'
