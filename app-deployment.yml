@@ -15,14 +15,14 @@ spec:
         app: shopping-app
     spec:
       containers:
-        - name: bajaj-app-cont
+        - name: shopping-app-cont
           image: mallikaroy/shopping-app:2.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:
             - name: SPRING_DATASOURCE_URL
-              value: "jdbc:postgresql://customer:5432/shopping"
+              value: "jdbc:postgresql://postgres:5432/shopping"
             - name: SPRING_DATASOURCE_USERNAME
               value: "postgres"
             - name: SPRING_DATASOURCE_PASSWORD
